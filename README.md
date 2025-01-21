@@ -5,7 +5,13 @@ db-hack - скрипт разработанный в рамках учебног
 ---
 
 ## Функционал
-Дает возможность добавлять одобрение ученика по выбранного предмету.
+Скрипт хранит в себе несколько функций для редактирования:
+
+`fix_marks(schoolkid)` - исправляет все плохие оценки на пятерки
+
+`remove_chastisements(schoolkid)` - удаляет все замечания ученика
+
+`create_commendations(schoolkid, subject_title)` - добавляет одобрение ученику по указанному предмету
 
 ## Минимальные требования
 * Python 3.7+
@@ -13,6 +19,9 @@ db-hack - скрипт разработанный в рамках учебног
 * Зависимости с `requirements.txt`
 ---
 ## Установка и запуск
+
+### Установка
+
 - Скопировать репозиторий
 ```
 git clone https://github.com/devmanorg/e-diary/tree/master
@@ -28,11 +37,28 @@ python -m venv  <имя env>
 ```
 pyhton3 manage.py shell
 ```
--  Импортировать и запустить скрипт в оболочке
-```
->>> from datacenter.create_commendations import create_commendations
 
->>> create_commendations('<Полное имя ученика для изменений>', '<Название предмета для изменений>')
+### Запуск
+1. Импортировать скрипт в оболочке со всеми функциями
+```
+>>> from datacenter.fixes_diary import fix_marks, remove_chastisements, create_commendations
+
+```
+2. Выбрать необходимую функцию:
+
+`fix_marks(schoolkid)` - запустить с указанием имени ученика:
+```
+>>> fix_marks('<указать полное имя>')
+```
+
+`remove_chastisements(schoolkid)` - запустить с указанием имени ученика:
+```
+>>> remove_chastisements('<указать полное имя>')
+```
+
+`create_commendations(schoolkid, subject_title)` - запустиь и в скобках указать полное имя ученика и название предмета.
+```
+>>> create_commendations(<Полное Имя Ученика>, <Название предмета>)
 ```
 
 ---
