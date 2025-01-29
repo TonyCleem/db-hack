@@ -7,6 +7,10 @@ db-hack - скрипт разработанный в рамках учебног
 ## Функционал
 Скрипт хранит в себе несколько функций для редактирования:
 
+`get_schoolkid()` - задает ученика
+
+`get_subject(schoolkid)` - задает предмет
+
 `fix_marks(schoolkid)` - исправляет все плохие оценки на пятерки
 
 `remove_chastisements(schoolkid)` - удаляет все замечания ученика
@@ -45,24 +49,59 @@ pyhton3 manage.py shell
 ### Запуск
 1. Импортировать скрипт в оболочке со всеми функциями
 ```
->>> from datacenter.fixes_diary import fix_marks, remove_chastisements, create_commendations
+from datacenter.fixes_diary import *
 
 ```
 2. Выбрать необходимую функцию:
 
-`fix_marks(schoolkid)` - запустить с указанием имени ученика:
+`get_schoolkid()` - Обозначаем ученика:
 ```
->>> fix_marks('<указать полное имя>')
+schoolkid = get_schoolkid()
+```
+Вводим ФИО:
+```
+Введите ФИО ученика: 
+```
+`get_subject(schoolkid)` - Обозначаем предмет:
+
+```
+schoolkid = get_schoolkid()
+```
+Вводим название предмета:
+```
+Введите название предмета:
+```
+> **_NOTE:_** Следующие функции рабтают только если ранее обозначены schoolkid и subject
+
+
+`fix_marks(schoolkid)` - Запустить указав schoolkid по-умолчанию:
+```
+fix_marks(schoolkid)
+```
+Пример вывода:
+```
+У ученика Кошелева Эмилия Михайловна нет плохих отметок
+
 ```
 
-`remove_chastisements(schoolkid)` - запустить с указанием имени ученика:
+`remove_chastisements(schoolkid)` - Запустить указав schoolkid по-умолчанию:
 ```
->>> remove_chastisements('<указать полное имя>')
+remove_chastisements(schoolkid)
+```
+Пример вывода:
+```
+У ученика Кошелева Эмилия Михайловна нет замечаний
 ```
 
-`create_commendations(schoolkid, subject_title)` - запустиь и в скобках указать полное имя ученика и название предмета.
+
+`create_commendations(schoolkid, subject)` - Запустить указав schoolkid и subject по-умолчанию:
 ```
->>> create_commendations(<Полное Имя Ученика>, <Название предмета>)
+create_commendations(schoolkid, subject)
+```
+Пример вывода:
+```
+Ученику Кошелева Эмилия Михайловна, добавлен комплимент "Гораздо лучше, чем я ожидал!"
+
 ```
 
 ---
