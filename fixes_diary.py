@@ -42,7 +42,7 @@ def get_subject(schoolkid):
 def fix_marks(schoolkid):
     fixed_marks = Mark.objects.filter(
         points__lte=3,
-        schoolkid__full_name__contains=schoolkid.full_name,
+        schoolkid=schoolkid,
     )
     if not fixed_marks:
         print(f"У ученика {schoolkid.full_name} нет плохих отметок")
@@ -83,8 +83,8 @@ def create_commendations(schoolkid, subject):
 
 
 def main():
-    get_schoolkid()
-    get_subject(schoolkid)
+    schoolkid = get_schoolkid()
+    subject = get_subject(schoolkid)
     fix_marks(schoolkid)
     remove_chastisements(schoolkid)
     create_commendations(schoolkid, subject)
